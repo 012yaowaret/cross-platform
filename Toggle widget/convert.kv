@@ -1,0 +1,69 @@
+<UI>:
+    id:Scr_manager
+    Scr_1:
+    Scr_2:
+
+<Scr_2>:
+    name:"Scr_2"
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text:"กลับหน้าแรก"
+            font_name:"tahoma"
+            background_color: "#99CCFF"
+            on_press:app.root.current='Scr_1'
+            pos_hint:{'center_x' : 0.90,'center_y':0.85} #ปรับขยับชิดซ้ายขวา กลาง เรื่อยๆ 
+            size_hint:0.25,0.10
+        TextInput:
+            id:txt_number
+            font_size: 20
+            size_hint:(1,0.35)
+            hint_text:"input number" 
+            background_color: "#F5DEB3"  
+        BoxLayout:    
+            ToggleButton:
+                font_name:"tahoma"
+                text : "base 2" #ข้อความที่ปุ่ม 
+                group:'convert_mode' #  จัดกลุ่ม 
+                on_press:root.convert(*args)
+
+            ToggleButton:
+                font_name:"tahoma"
+                text : "base 8" #ข้อความที่ปุ่ม 
+                group:'convert_mode' #  จัดกลุ่ม 
+                on_press:root.convert(*args)
+
+            ToggleButton:
+                font_name:"tahoma"
+                text : "base 16" #ข้อความที่ปุ่ม 
+                group:'convert_mode' #  จัดกลุ่ม 
+                on_press:root.convert(*args)
+
+             
+    
+        #Button:
+            # text: "convert"
+           #  on_press: root.convert()
+             #on_press: root.cal_bmi() #ผูกฟังก์ชั่น cal_bmi ไม่ส่งค่าใดๆ  
+
+        
+
+        Label:      
+            id:lbl_output
+            #text:"bmi ="
+       
+<Scr_1>:
+    name:'Scr_1'
+    canvas.before:
+        Rectangle:
+            source: "s1.jpg"
+            size: root.width, root.height
+            pos: self.pos
+
+    Button:
+        text:"แปลงฐานข้อมูล"
+        font_name:"tahoma" 
+        color: '#3300FF'
+        on_press:app.root.current='Scr_2'
+        pos_hint:{'center_x' : 0.5,'center_y':0.1} #ปรับขยับชิดซ้ายขวา กลาง เรื่อยๆ 
+        size_hint:0.25,0.10
