@@ -1,0 +1,67 @@
+ScreenManager:
+    FirstScreen:
+    SecondScreen:
+
+<FirstScreen>:
+    name: 'first'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
+        Image:
+            source: '1.jpg'
+            size_hint: 1, 0.5
+        Label:
+            text: 'เข้าสู่ระบบ'
+            font_name:"tahoma"
+            font_size: '24sp'
+            size_hint: 1, 0.2
+
+
+        TextInput:
+            id: Newregistration
+            hint_text: 'ลงทะเบียนใหม่'
+            font_name:"tahoma"
+            multiline: False
+            size_hint: 1, 0.1
+
+        TextInput:
+            id: Foreigner
+            hint_text: 'For Foreigner'
+            multiline: False
+            size_hint: 1, 0.1
+
+        Button:
+            text: 'ถัดไป'
+            font_name:"tahoma"
+            size_hint: 1, 0.1
+            on_press:
+                app.root.current = 'second'
+                app.root.get_screen('second').ids.Foreigner.text = uForeigner.text
+                app.root.get_screen('second').ids.Newregistration.text = Newregistration.text
+
+<SecondScreen>:
+    name: 'second'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'กรุณากรอกรหัสผ่าน'
+            font_size: '24sp'
+            size_hint: 1, 0.2
+            font_name:"tahoma"
+
+        TextInput:
+            id: password
+            hint_text: 'รหัสผ่าน'
+            password: True
+            multiline: False
+            size_hint: 1, 0.1
+
+        Button:
+            text: 'สมัครสมาชิก'
+            size_hint: 1, 0.1
+            on_press: root.submit_registration()
